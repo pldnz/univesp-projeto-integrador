@@ -17,3 +17,16 @@ class User(db.Model):
     cidade = db.Column(db.String(100))
     estado = db.Column(db.String(2))
     cep = db.Column(db.String(9))
+    avatar_url = db.Column(db.String(255))
+    nome_instituicao = db.Column(db.String(120))
+    password_hash = db.Column(db.String(256))
+    
+    pets = db.relationship('Pet', backref='owner', lazy=True)
+
+    def set_password(self, password):
+        from werkzeug.security import generate_password_hash
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        from werkzeug.security import check_password_hash
+        return check_password_hash(self.password_hash, password)
