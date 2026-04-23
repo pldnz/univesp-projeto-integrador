@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Settings, LogOut, Heart, MessageSquare, Trash2, Edit, ChevronRight, User, MapPin } from 'lucide-react';
+import { Plus, Settings, LogOut, Heart, Trash2, Edit, ChevronRight, MapPin } from 'lucide-react';
+
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
