@@ -1,0 +1,229 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+@theme {
+  --color-primary: var(--primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary: var(--on-primary);
+
+  --color-surface: var(--surface);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+
+  --color-tertiary: var(--tertiary);
+
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+
+  --color-error: #ba1a1a;
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+
+  --shadow-ambient: var(--ambient-shadow);
+}
+
+:root {
+  /* System Colors - The Digital Sanctuary */
+  --surface: #fcf9f4;
+  --surface-container-low: #f6f3ee;
+  --surface-container: #f0ede9;
+  --surface-container-high: #ebe8e3;
+  --surface-container-highest: #e5e2dd;
+  --surface-container-lowest: #ffffff;
+
+  --primary: #8a4525;
+  --primary-container: #a85d3b;
+  --on-primary: #ffffff;
+
+  --on-surface: #1c1c19;
+  --on-surface-variant: #54433d;
+
+  --tertiary: #645647;
+
+  --secondary-container: #d0eac9;
+  --on-secondary-container: #536a50;
+
+  --outline-variant: #d9c2b9;
+
+  /* Typography */
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Be Vietnam Pro", sans-serif;
+
+  /* Elevations & Ghost Borders */
+  --ghost-border: rgba(217, 194, 185, 0.15);
+  --ambient-shadow: 0 40px 60px rgba(28, 28, 25, 0.06);
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--surface);
+    color: var(--on-surface);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .headline {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    color: var(--on-surface);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+  }
+
+  button {
+    cursor: pointer;
+    font-family: var(--font-display);
+    border: none;
+    outline: none;
+    background: none;
+  }
+}
+
+/* --- Containerization System --- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section-padding {
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 0;
+  }
+}
+
+/* --- UI Logic --- */
+
+/* Premium Card (Floating & White) */
+.card-white {
+  background-color: var(--surface-container-lowest);
+  border-radius: 2rem;
+  box-shadow: var(--ambient-shadow);
+  overflow: hidden;
+  border: 1px solid var(--ghost-border);
+}
+
+/* Tonal Section (Subtle background shift) */
+.section-tonal {
+  background-color: var(--surface-container-low);
+  border-radius: 3rem;
+  padding: 4rem 2rem;
+}
+
+/* Glassmorphism Navigation */
+.glass-nav {
+  background: rgba(252, 249, 244, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ghost-border);
+}
+
+/* --- Buttons --- */
+.btn-primary {
+  background: radial-gradient(
+    circle at top left,
+    var(--primary),
+    var(--primary-container)
+  );
+  color: var(--on-primary);
+  border-radius: 9999px;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(138, 69, 37, 0.25);
+}
+
+.btn-secondary {
+  background-color: var(--surface-container-high);
+  color: var(--on-surface-variant);
+  border-radius: 9999px;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--surface-container-highest);
+}
+
+/* --- Components --- */
+.chip {
+  background: var(--secondary-container);
+  color: var(--on-secondary-container);
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.input-tonal {
+  width: 100%;
+  padding: 1.25rem 1.75rem;
+  background-color: var(--surface-container-low);
+  border: 1.5px solid transparent;
+  border-radius: 1.25rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  outline: none;
+  color: var(--on-surface);
+}
+
+.input-tonal:focus {
+  background-color: var(--surface-container-lowest);
+  border-color: var(--primary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-container-highest);
+  border-radius: 10px;
+}
