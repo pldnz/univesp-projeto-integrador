@@ -55,15 +55,19 @@ const LandingFeed = () => {
       <main className="container pt-20">
         {/* Editorial Heading */}
         <div className="mb-16 flex flex-col md:flex-row justify-between items-end gap-10">
-          <figure>
-            <img src={goldenBanner} alt="PetFinder" />
-            <figcaption>
-              <h2 className="text-5xl md:text-7xl font-black text-on-surface tracking-tighter leading-none mb-6">
+          <figure className="relative w-full h-auto bg-primary rounded-2xl overflow-hidden pt-[60%] md:pt-[36%]">
+            <img
+              src={goldenBanner}
+              alt="PetFinder"
+              className="absolute top-0 left-0 w-full h-full object-cover"
+            />
+            <figcaption className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-left h-full flex items-center p-5 lg:p-10">
+              <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter leading-none mb-6">
                 Encontre seu
                 <br />
                 novo
                 <br />
-                <span className="text-primary italic">melhor amigo.</span>
+                <span className="text-[#FFDBCD] italic">melhor amigo.</span>
               </h2>
             </figcaption>
           </figure>
@@ -79,8 +83,8 @@ const LandingFeed = () => {
         </div>
 
         {/* Search & Action Bar - Integrated into Content */}
-        <div className="flex flex-col md:flex-row gap-8 mb-20 items-center">
-          <div className="flex-1 w-full relative group">
+        <div className="flex flex-col md:flex-row gap-8 mb-10 items-center">
+          <div className="flex-1 h-full w-full relative group">
             <Search
               className="absolute left-6 top-1/2 -translate-y-1/2 text-tertiary/40 group-focus-within:text-primary transition-colors"
               size={20}
@@ -90,13 +94,13 @@ const LandingFeed = () => {
               placeholder="Pesquisar por Cidade, Estado ou ONG..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-16 pr-8 py-6 bg-white rounded-[2rem] border border-ghost-border focus:ring-4 focus:ring-primary/5 outline-none transition-all shadow-sm text-lg font-medium"
+              className="h-full w-full pl-16 pr-8 py-[13px] bg-white rounded-[2rem] border border-ghost-border focus:ring-4 focus:ring-primary/5 outline-none transition-all shadow-sm text-base font-medium"
             />
           </div>
 
           <button
             onClick={() => setShowFilters(!showFilters)}
-            className={`flex items-center gap-4 px-10 py-6 rounded-[2rem] font-black text-xs uppercase tracking-widest transition-all shadow-sm ${
+            className={`h-full flex items-center gap-4 px-5 py-3 rounded-[2rem] font-black text-xs uppercase tracking-widest transition-all shadow-sm ${
               showFilters || gender || size || ageGroup
                 ? "bg-primary text-white scale-105"
                 : "bg-white text-tertiary hover:bg-surface-container-low border border-ghost-border"
@@ -108,12 +112,12 @@ const LandingFeed = () => {
         </div>
 
         {/* Species Filter Scroll */}
-        <div className="flex gap-4 mb-8 overflow-x-auto pb-4 no-scrollbar">
+        <div className="flex mb-8 pb-4 overflow-x-auto lg:overflow-visible">
           {speciesFilters.map((s) => (
             <button
               key={s}
               onClick={() => setType(s)}
-              className={`px-10 py-5 rounded-3xl font-bold whitespace-nowrap transition-all text-xs uppercase tracking-widest ${
+              className={`px-5 py-3 mx-2 rounded-3xl font-bold whitespace-nowrap transition-all text-xs uppercase tracking-widest ${
                 type === s
                   ? "bg-primary text-white shadow-xl shadow-primary/20 scale-105"
                   : "bg-white text-tertiary hover:bg-surface-container-low border border-ghost-border"
@@ -126,50 +130,50 @@ const LandingFeed = () => {
 
         {/* Advanced Filters Bar */}
         {showFilters && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20 animate-fade-in">
-            <div className="space-y-3">
-              <label className="text-[10px] font-black uppercase tracking-widest text-primary/40 ml-1">
+          <div className="flex flex-col md:flex-row gap-4 items-center mb-20 animate-fade-in">
+            <div className="w-full md:max-w-[200px]">
+              <label className="flex flex-col gap-2 text-[10px] font-black uppercase tracking-widest text-primary/40 ml-1">
                 Sexo
+                <select
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                  className="w-full px-5 py-2 bg-white border border-ghost-border rounded-[1.5rem] font-bold text-base text-tertiary appearance-none cursor-pointer outline-none focus:ring-2 focus:ring-primary/10"
+                >
+                  <option value="">Todos</option>
+                  <option value="Macho">Macho</option>
+                  <option value="Fêmea">Fêmea</option>
+                </select>
               </label>
-              <select
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-                className="w-full p-5 bg-white border border-ghost-border rounded-[1.5rem] font-bold text-xs appearance-none cursor-pointer outline-none focus:ring-2 focus:ring-primary/10"
-              >
-                <option value="">Todos</option>
-                <option value="Macho">Macho</option>
-                <option value="Fêmea">Fêmea</option>
-              </select>
             </div>
-            <div className="space-y-3">
-              <label className="text-[10px] font-black uppercase tracking-widest text-primary/40 ml-1">
+            <div className="w-full md:max-w-[200px]">
+              <label className="flex flex-col gap-2 text-[10px] font-black uppercase tracking-widest text-primary/40 ml-1">
                 Porte
+                <select
+                  value={size}
+                  onChange={(e) => setSize(e.target.value)}
+                  className="w-full px-5 py-2 bg-white border border-ghost-border rounded-[1.5rem] font-bold text-base text-tertiary appearance-none cursor-pointer outline-none focus:ring-2 focus:ring-primary/10"
+                >
+                  <option value="">Todos</option>
+                  <option value="Pequeno">Pequeno</option>
+                  <option value="Porte Médio">Médio</option>
+                  <option value="Grande">Grande</option>
+                </select>
               </label>
-              <select
-                value={size}
-                onChange={(e) => setSize(e.target.value)}
-                className="w-full p-5 bg-white border border-ghost-border rounded-[1.5rem] font-bold text-xs appearance-none cursor-pointer outline-none focus:ring-2 focus:ring-primary/10"
-              >
-                <option value="">Todos</option>
-                <option value="Pequeno">Pequeno</option>
-                <option value="Porte Médio">Médio</option>
-                <option value="Grande">Grande</option>
-              </select>
             </div>
-            <div className="space-y-3">
-              <label className="text-[10px] font-black uppercase tracking-widest text-primary/40 ml-1">
+            <div className="w-full md:max-w-[200px]">
+              <label className="flex flex-col gap-2 text-[10px] font-black uppercase tracking-widest text-primary/40 ml-1">
                 Idade
+                <select
+                  value={ageGroup}
+                  onChange={(e) => setAgeGroup(e.target.value)}
+                  className="w-full px-5 py-2 bg-white border border-ghost-border rounded-[1.5rem] font-bold text-base text-tertiary appearance-none cursor-pointer outline-none focus:ring-2 focus:ring-primary/10"
+                >
+                  <option value="">Todas</option>
+                  <option value="Filhote">Filhote (até 1 ano)</option>
+                  <option value="Adulto">Adulto (1-7 anos)</option>
+                  <option value="Sênior">Sênior (+7 anos)</option>
+                </select>
               </label>
-              <select
-                value={ageGroup}
-                onChange={(e) => setAgeGroup(e.target.value)}
-                className="w-full p-5 bg-white border border-ghost-border rounded-[1.5rem] font-bold text-xs appearance-none cursor-pointer outline-none focus:ring-2 focus:ring-primary/10"
-              >
-                <option value="">Todas</option>
-                <option value="Filhote">Filhote (até 1 ano)</option>
-                <option value="Adulto">Adulto (1-7 anos)</option>
-                <option value="Sênior">Sênior (+7 anos)</option>
-              </select>
             </div>
           </div>
         )}
@@ -200,9 +204,9 @@ const LandingFeed = () => {
                     className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                   />
                   <div className="absolute top-6 right-6">
-                    <div className="w-12 h-12 bg-white/95 backdrop-blur rounded-2xl flex items-center justify-center text-tertiary shadow-lg group-hover:text-primary transition-colors">
+                    {/* <div className="w-12 h-12 bg-white/95 backdrop-blur rounded-2xl flex items-center justify-center text-tertiary shadow-lg group-hover:text-primary transition-colors">
                       <Heart size={24} />
-                    </div>
+                    </div> */}
                   </div>
                   <div className="absolute bottom-6 left-6 px-4 py-2 bg-primary text-white rounded-xl text-[10px] font-black uppercase tracking-widest">
                     {pet.type}
