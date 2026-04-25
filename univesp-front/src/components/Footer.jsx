@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Heart, Globe, MessageSquare, Plus } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Heart, Globe, MessageSquare, Plus } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -13,37 +13,65 @@ const Footer = () => {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
                 <Heart size={16} fill="currentColor" />
               </div>
-              <span className="text-xl font-black uppercase tracking-tighter text-primary">Petfinder</span>
+              <span className="text-xl font-black uppercase tracking-tighter text-primary">
+                Petfinder
+              </span>
             </Link>
             <p className="text-tertiary text-lg font-medium max-w-sm leading-relaxed">
-              Transformando a vida de animais abandonados através de conexões reais e amorosas entre ONGs e adotantes.
+              Transformando a vida de animais abandonados através de conexões
+              reais e amorosas entre ONGs e adotantes.
             </p>
-            <div className="flex gap-6">
+            {/* <div className="flex gap-6">
               {[Globe, MessageSquare, Plus].map((Icon, i) => (
                 <a key={i} href="#" className="w-12 h-12 flex items-center justify-center bg-surface rounded-2xl text-tertiary hover:bg-primary/10 hover:text-primary transition-all">
                   <Icon size={20} />
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Links Quick */}
           <div className="space-y-8">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Navegação</h4>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">
+              Navegação
+            </h4>
             <ul className="space-y-4">
-              <li><Link to="/" className="text-tertiary font-bold hover:text-primary transition-colors">Encontrar Pet</Link></li>
-              <li><Link to="/login" className="text-tertiary font-bold hover:text-primary transition-colors">Sou Protetor</Link></li>
-              <li><Link to="/signup" className="text-tertiary font-bold hover:text-primary transition-colors">Cadastrar ONG</Link></li>
+              <li>
+                <Link
+                  to="/"
+                  className="text-tertiary font-bold hover:text-primary transition-colors"
+                >
+                  Encontrar Pet
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/login"
+                  className="text-tertiary font-bold hover:text-primary transition-colors"
+                >
+                  Sou Protetor
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/signup"
+                  className="text-tertiary font-bold hover:text-primary transition-colors"
+                >
+                  Cadastrar ONG
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Support */}
           <div className="space-y-8">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">Suporte</h4>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.4em] text-primary">
+              Suporte
+            </h4>
             <ul className="space-y-4">
-              <li className="flex items-center gap-3 text-tertiary font-bold italic">
+              {/* <li className="flex items-center gap-3 text-tertiary font-bold italic">
                 <MessageSquare size={16} /> suporte@petfinder.com
-              </li>
+              </li> */}
               <li className="text-tertiary font-bold">Termos de Uso</li>
               <li className="text-tertiary font-bold">Privacidade</li>
             </ul>

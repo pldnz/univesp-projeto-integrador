@@ -142,3 +142,30 @@ def delete_pet(id):
     db.session.commit()
     
     return jsonify({"msg": "Animal removido"}), 200
+
+@pets_bp.route('/pets/<int:id>', methods=['PUT'])
+@jwt_required()
+def update_pet(id):
+    current_user_id = get_jwt_identity()
+    pet = Pet.query.get_or_404(id)
+    
+    # Apenas o dono do pet pode editar
+    if str(pet.user_id) != current_user_id:
+        return jsonify({"msg": "Não autorizado"}), 403
+        
+    data = request.get_json()
+    
+    pet.name = data.get('name', pet.name)
+    pet.type = data.get('type', pet.type)
+    pet.age = data.get('age', pet.age)
+    pet.size = data.get('size', pet.size)
+    pet.gender = data.get('gender', pet.gender)
+    pet.location = data.get('location', pet.location)
+    pet.image_url = data.get('image_url', pet.image_url)
+    pet.description = data.get('description', pet.description)
+    pet.status = data.get('status', pet.status)
+    
+    db.session.commit()
+    
+    return jsonify({"msg": "Dados do animal atualizados com sucesso"}), 200
+

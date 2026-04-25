@@ -24,11 +24,8 @@ const AnimalRegistration = () => {
     if (id) {
       const fetchPet = async () => {
         try {
-          const response = await api.get('/pets');
-          const petToEdit = response.data.find(p => p.id === parseInt(id));
-          if (petToEdit) {
-            setFormData({ ...petToEdit });
-          }
+          const response = await api.get(`/pets/${id}`);
+          setFormData({ ...response.data });
         } catch (error) {
           console.error('Erro ao carregar animal:', error);
         }
@@ -41,7 +38,14 @@ const AnimalRegistration = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      if (!id) {
+      if (id) {
+        await api.put(`/pets/${id}`, {
+          ...formData,
+          age: parseInt(formData.age)
+        });
+        setSuccess(true);
+        setTimeout(() => navigate('/dashboard'), 2000);
+      } else {
         await api.post('/pets', {
           ...formData,
           age: parseInt(formData.age)
@@ -70,8 +74,8 @@ const AnimalRegistration = () => {
         <div className="w-24 h-24 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container mb-8">
           <CheckCircle2 size={56} />
         </div>
-        <h1 className="text-4xl font-black mb-4 italic">Publicado com Sucesso!</h1>
-        <p className="text-tertiary text-xl font-medium">Sua história acaba de ganhar um novo capítulo.</p>
+        <h1 className="text-4xl font-black mb-4 italic">{id ? 'Atualizado com Sucesso!' : 'Publicado com Sucesso!'}</h1>
+        <p className="text-tertiary text-xl font-medium">{id ? 'As informações do seu amigo foram atualizadas.' : 'Sua história acaba de ganhar um novo capítulo.'}</p>
         <p className="text-primary mt-8 font-black animate-pulse uppercase tracking-[0.3em] text-[10px]">Voltando ao Painel...</p>
       </div>
     );
@@ -184,9 +188,9 @@ const AnimalRegistration = () => {
           </div>
 
           <button type="submit" disabled={loading} className="btn-primary w-full !py-7 text-xl shadow-2xl">
-            {loading ? 'Publicando...' : (
+            {loading ? (id ? 'Atualizando...' : 'Publicando...') : (
               <>
-                <Heart size={24} /> Publicar Anúncio
+                <Heart size={24} /> {id ? 'Salvar Alterações' : 'Publicar Anúncio'}
               </>
             )}
           </button>
