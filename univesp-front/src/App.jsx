@@ -8,6 +8,8 @@ import PetDetail from './pages/PetDetail';
 import Dashboard from './pages/Dashboard';
 import AnimalRegistration from './pages/AnimalRegistration';
 import Profile from './pages/Profile';
+import TermsOfUse from './pages/TermsOfUse';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import Layout from './components/Layout';
 
 // Componente para proteger rotas da ONG
@@ -29,6 +31,8 @@ const AppRoutes = () => {
         <Route path="/pet/:id" element={<PetDetail />} />
         <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login />} />
         <Route path="/signup" element={user ? <Navigate to="/dashboard" /> : <RegisterUser />} />
+        <Route path="/termos" element={<TermsOfUse />} />
+        <Route path="/privacidade" element={<PrivacyPolicy />} />
         
         {/* Rotas Privadas */}
         <Route path="/dashboard" element={

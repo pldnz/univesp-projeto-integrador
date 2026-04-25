@@ -45,20 +45,24 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/login"
+                <a
+                  href="https://wa.me/5515981349240?text=Olá, sou protetor e gostaria de saber mais sobre o PetFinder."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-tertiary font-bold hover:text-primary transition-colors"
                 >
                   Sou Protetor
-                </Link>
+                </a>
               </li>
               <li>
-                <Link
-                  to="/signup"
+                <a
+                  href="https://wa.me/5515981349240?text=Olá, gostaria de cadastrar minha ONG no PetFinder."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-tertiary font-bold hover:text-primary transition-colors"
                 >
                   Cadastrar ONG
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -72,8 +76,16 @@ const Footer = () => {
               {/* <li className="flex items-center gap-3 text-tertiary font-bold italic">
                 <MessageSquare size={16} /> suporte@petfinder.com
               </li> */}
-              <li className="text-tertiary font-bold">Termos de Uso</li>
-              <li className="text-tertiary font-bold">Privacidade</li>
+              <li>
+                <Link to="/termos" className="text-tertiary font-bold hover:text-primary transition-colors">
+                  Termos de Uso
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacidade" className="text-tertiary font-bold hover:text-primary transition-colors">
+                  Privacidade
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

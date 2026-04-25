@@ -21,8 +21,8 @@ const Header = () => {
           </span>
         </Link>
 
-        {/* Navigation */}
-        <div className="flex items-center gap-4">
+        {/* Navigation - momentaneamente escondido até hospedar o backend */}
+        <div className="flex items-center gap-4 hidden">
           {user ? (
             <div className="flex items-center gap-4">
               <Link
@@ -43,12 +43,14 @@ const Header = () => {
               </button>
             </div>
           ) : (
-            <Link
-              to="/login"
+            <a
+              href="https://wa.me/5515981349240?text=Olá, sou protetor e gostaria de saber mais sobre o PetFinder."
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary !px-8 !py-3.5 text-xs tracking-widest"
             >
               Sou Protetor
-            </Link>
+            </a>
           )}
         </div>
       </div>

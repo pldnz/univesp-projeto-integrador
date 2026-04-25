@@ -94,7 +94,7 @@ const Login = () => {
           </form>
 
           <p className="text-center mt-12 text-tertiary text-sm font-medium">
-            Ainda não tem conta? <Link to="/signup" className="text-primary font-black hover:underline italic">Cadastrar ONG</Link>
+            Ainda não tem conta? <a href="https://wa.me/5515981349240?text=Olá, gostaria de cadastrar minha ONG no PetFinder." target="_blank" rel="noopener noreferrer" className="text-primary font-black hover:underline italic">Cadastrar ONG</a>
           </p>
         </div>
         
